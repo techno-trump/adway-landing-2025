@@ -3,7 +3,7 @@ import throttle from "lodash.throttle";
 
 import { isMobile } from "./utils.js";
 import initDisclosures from "./disclosure.js";
-import "./range-slider.min.js";
+// import "./range-slider.min.js";
 import Lenis from 'lenis';
 
 window.app = window.app || {};
@@ -39,45 +39,22 @@ document.querySelectorAll(`[data-component*=":intersection-observer:"]`).forEach
 	intersectionObserver.observe(elem);
 });
 
-initRangeSlider();
+initCalculator();
 
-function initRangeSlider() {
+function initCalculator() {
 	const rangeTotal = document.querySelector(".range__total");
-	const root = document.querySelectorAll("input[data-rangeSlider]");
-	rangeSlider.create(root, {
-		polyfill: true,
-		rangeClass: "rangeSlider",
-		disabledClass: "rangeSlider--disabled",
-		fillClass: "rangeSlider__fill",
-		bufferClass: "rangeSlider__buffer",
-		handleClass: "rangeSlider__handle",
-		startEvent: ["mousedown", "touchstart", "pointerdown"],
-		moveEvent: ["mousemove", "touchmove", "pointermove"],
-		endEvent: ["mouseup", "touchend", "pointerup"],
-		min: 10,
-		max: 60,
-		step: 5,
-		value: 25,
-	
-		onInit: function () {
-			document
-				.querySelector('[data-item="25"]')
-				.classList.add("points__item_active");
-		},
-	
-		onSlide: function (position) {
-			rangeTotal.innerText = `$${position * 5}-$${position * 5 + 25}`;
-		},
-	
-		onSlideEnd: function (position) {
-			document.querySelectorAll(".points__item").forEach(function (item) {
-				item.classList.remove("points__item_active");
-			});
-			document
-				.querySelector('[data-item="' + position + '"]')
-				.classList.add("points__item_active");
-		},
-	});
+	const slider = document.querySelector("#monetizing-hours");
+	const recalc = () => {
+		document.querySelectorAll(".points__item").forEach(function (item) {
+			item.classList.remove("points__item_active");
+		});
+		document
+			.querySelector('[data-item="' + slider.value + '"]')?.classList.add("points__item_active");
+
+		rangeTotal.innerText = `$${slider.value * 5}-$${slider.value * 5 + 25}`;
+	};
+	recalc();
+	slider.addEventListener("change", recalc);
 }
 
 window.onSubmitReCaptcha = async function() {
@@ -136,4 +113,14 @@ document.querySelectorAll(`[href*="#"]`).forEach(elem => {
 		app.drawers.close("main-menu");
 		window.app.lenis.scrollTo(anchor, { offset: -80 });
 	});
+});
+document.querySelectorAll(`.range-slider`).forEach(elem => {
+	const recalcProgress = () => {
+		const min = parseFloat(elem.getAttribute("min"));
+		const max = parseFloat(elem.getAttribute("max"));
+		console.log(elem.value, min, max);
+		elem.style.setProperty("--progress", `${(elem.value - min) / (max - min) * 100}%`);
+	};
+	recalcProgress();
+	elem.addEventListener("input", recalcProgress);
 });

@@ -112,8 +112,7 @@ input[type='range']:focus + .rangeSlider .rangeSlider__handle {
   display: flex;
 	justify-content: space-between;
   margin-top: 8px;
-	margin-left: -0.4em;
-	margin-right: -0.6em;
+
   &__item {
 		flex: 0 0 1.2em;
 		display: inline-block;
@@ -122,7 +121,7 @@ input[type='range']:focus + .rangeSlider .rangeSlider__handle {
     color: var(--gray-600);
 
     &_active {
-      color: var(--blue-600);
+      color: var(--green-700);
     }
   }
 
