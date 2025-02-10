@@ -5773,6 +5773,11 @@ lead@^1.0.0:
   dependencies:
     flush-write-stream "^1.0.2"
 
+lenis@^1.1.20:
+  version "1.1.20"
+  resolved "https://registry.yarnpkg.com/lenis/-/lenis-1.1.20.tgz#24c35199539b3c0064f50b9d26f85355171194aa"
+  integrity sha512-UE64mlJEN4W8DWP2tfHzPzygk94Q2BhjzeG/YHWoyeMJ2Fd6XziBCNN+IvHwmB4GkmKIYxgr0+TvRYTSAMTMFA==
+
 liftoff@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/liftoff/-/liftoff-3.1.0.tgz#c9ba6081f908670607ee79062d700df062c52ed3"

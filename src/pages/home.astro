@@ -232,7 +232,7 @@ const medias = [
 			<h2 class="tg-section-title case-studies__title">Case studies:</h2>
 			<div class="case-studies__list cases-grid">
 				{
-					cases.map(({ src, stack, name, desc, drawer }) => 
+					cases.map(({ src, stack, name, desc, drawer, caseSrc }) => 
 						<div class="case-study-card">
 							<div class="case-study-card__img-area">
 								<img alt="Learn, Graduate, Work" class="case-study-card__img" src={src}>
@@ -242,7 +242,7 @@ const medias = [
 								<div class="case-study-card__name">{name}</div>
 								<div class="case-study-card__desc">{desc}</div>
 							</div>
-							<button type="button" class="btn btn_primary case-study-card__btn" data-drawer-open={drawer}>Learn More</button>
+							<a href={caseSrc} data-fslightbox="cases" class="btn btn_primary case-study-card__btn" data-drawer-open={drawer}>Learn More</a>
 						</div>)
 				}
 			</div>

@@ -1,13 +1,16 @@
 import "../styles/index.scss";
-import KeenSlider from "keen-slider";
 import throttle from "lodash.throttle";
 
 import { isMobile } from "./utils.js";
 import initDisclosures from "./disclosure.js";
 import "./range-slider.min.js";
+import Lenis from 'lenis';
 
 window.app = window.app || {};
 window.app.hoverMedia = window.matchMedia("(any-hover: hover)");
+window.app.lenis =  new Lenis({
+	autoRaf: true,
+})
 
 document.documentElement.classList.toggle("is-mobile", isMobile.any());
 
@@ -119,3 +122,18 @@ window.onSubmitReCaptcha = async function() {
 document.addEventListener("scroll", throttle(() => {
 	document.documentElement.classList.toggle("hide-title", window.scrollY > 50);
 }));
+
+
+document.querySelectorAll(`[href*="#"]`).forEach(elem => {
+	elem.addEventListener("click", (e) => {
+		e.preventDefault();
+		const pattern = /.*?(\#.*)/;
+		const href = elem.getAttribute("href");
+		const match = href.match(pattern);
+		const anchor = match ? match[1] : null;
+
+		history.pushState(null, "", anchor);
+		app.drawers.close("main-menu");
+		window.app.lenis.scrollTo(anchor, { offset: -80 });
+	});
+});

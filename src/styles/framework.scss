@@ -497,6 +497,11 @@
 	gap: 40px 30px;
 	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 	justify-items: center;
+	@media (max-width: config.$mbpM) {
+		& > *:nth-child(n + 5) {
+			display: none;
+		}
+	}
 }
 
 .case-study-card {
