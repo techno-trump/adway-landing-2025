@@ -1,12 +1,12 @@
 @use "./config.scss" as config;
 :root {
-	--section-space: 80px;
+	--section-space: 50px;
 	@media (max-width: config.$mbpT) {
-		--section-space: 60px;
+		--section-space: 36px;
 	}
-	@media (max-width: config.$mbpM) {
-		--section-space: 40px;
-	}
+	// @media (max-width: config.$mbpM) {
+	// 	--section-space: 24px;
+	// }
 }
 .section-space {
 	padding-top: var(--section-space);
@@ -15,14 +15,16 @@
 	padding-bottom: var(--section-space);
 }
 html {
-	background-color: var(--sf-main-bg);
+	--scroll-width: 0px;
+	&:not(.is-mobile) {
+		--scroll-width: 17px;
+	}
+	--scroll-compensation: 0px;
 }
 html.scroll-lock-by-drawer {
-	--scroll-width: 17px;
 	overflow: hidden;
-	&:not(.is-mobile) {
-		padding-right: var(--scroll-width);
-	}
+	--scroll-compensation: var(--scroll-width);
+	padding-right: var(--scroll-width);
 }
 body {
 	flex: 1 1 auto;
@@ -35,10 +37,12 @@ body main {
 }
 .container {
 	width: 100%;
-	max-width: 1500px;
 	margin: auto;
 	padding-left: var(--container-save-space);
 	padding-right: var(--container-save-space);
+	&_wide {
+		max-width: 1440px;
+	}
 }
 
 .flex-even {
@@ -54,9 +58,4 @@ body main {
 		padding-left: var(--row-gap, var(--gap, 0));
 		padding-top: var(--column-gap, var(--gap, 0));
 	}
-}
-.light-bg {
-	background-color: var(--sf-section-light);
-}
-.section-space {
 }

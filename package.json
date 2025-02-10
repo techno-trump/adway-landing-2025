@@ -1,10 +1,10 @@
 {
-  "name": "astro-webpack-gulp-boilerplate",
+  "name": "adway-landing-2025",
   "type": "module",
   "version": "0.0.2",
   "scripts": {
     "generate-webp": "node generate-webp.js",
-    "dev": "concurrently \"gulp generateFontFaces convertIconFontsFaces --rewrite && webpack serve --config webpack.dev.js\" \"astro dev\"",
+    "dev": "concurrently \"gulp generateFontFaces convertIconFontsFaces --rewrite && webpack serve --config webpack.dev.js\" \"astro dev --host\"",
     "start": "astro dev",
     "build": "astro check && astro build && gulp --rewrite --prod && webpack --config webpack.prod.js",
     "preview": "astro preview",
@@ -13,6 +13,7 @@
   "dependencies": {
     "@astrojs/check": "^0.5.9",
     "astro": "^4.5.4",
+    "keen-slider": "^6.8.6",
     "lodash.throttle": "^4.1.1",
     "sass": "^1.83.0",
     "tom-select": "^2.4.1"

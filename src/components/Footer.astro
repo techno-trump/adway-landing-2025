@@ -1,8 +1,66 @@
 ---
 ---
 
-<footer class="footer">
-	<div class="container footer__container">
-
+<footer class="footer section-space">
+	<div class="container container_wide footer__container">
+		<div class="footer__section footer__section_logo">
+			<a href="" class="footer__logo logo logo_dark">
+				<figure>
+					<img src="img/logo.svg"class="logo__img" alt="Adway Logo" title="Adwayusa">
+					<figcaption class="logo__caption">Adwayusa Logotype</figcaption>
+				</figure>
+			</a>
+			<div class="footer__slogan">Ads that move</div>
+		</div>
+		<div class="footer__section">
+			<h3 class="footer__section-title">Sign In</h3>
+			<div class="footer__section-body">
+				<a href="https://portal.adwayusa.com/signupadvertiser" class="btn footer__link">Sign In as Advertiser</a>
+				<a href="https://portal.adwayusa.com/signupdriver" class="btn footer__link">Sign In as Driver</a>
+			</div>
+		</div>
+		<div class="footer__section">
+			<h3 class="footer__section-title">Contact</h3>
+			<div class="footer__section-body">
+				<dl class="contacts">
+					<div class="contacts__item">
+						<dt>Email:</dt>
+						<dd><a href="mailto:info@adwayusa.com" class="btn footer__link">info@adwayusa.com</a></dd>
+					</div>
+					<div class="contacts__item">
+						<dt>Phone:</dt>
+						<dd><a href="tel:+12133214844" class="btn footer__link">(+1) 213-321-4844</a></dd>
+					</div>
+				</dl>
+				<div class="social-media">
+					<a href="https://www.facebook.com/driveadway" target="_blank" class="btn btn_social">
+						<div class="btn__icon icon-facebook"></div>
+					</a>
+					<a href="https://www.linkedin.com/company/adwayusa" target="_blank" class="btn btn_social">
+						<div class="btn__icon icon-twitter"></div>
+					</a>
+					<a href="https://twitter.com/adwayusa" target="_blank" class="btn btn_social">
+						<div class="btn__icon icon-linkedin"></div>
+					</a>
+					<!-- <a href="https://instagram.com/adwayusa" target="_blank" class="btn btn_social">
+						<div class="btn__icon icon-instagram"></div>
+					</a> -->
+				</div>
+			</div>
+		</div>
+		<div class="footer__section footer__section_newsletter">
+			<h3 class="footer__section-title">Newsletter</h3>
+			<form class="subscribe">
+				<div class="subscribe__field">
+					<div class="subscribe__title">Email</div>
+					<input type="email" class="subscribe__input" required>
+				</div>
+				<button data-sitekey="6LdXLLYUAAAAAGe0NJyNhiK62e0soCSk_sVQhyyQ"
+					data-callback="onSubmitReCaptcha"
+					onclick="onSubmitReCaptcha"
+					type="submit" class="subscribe__btn btn_primary btn g-recaptcha">
+					Subscribe</button>
+			</form>
+		</div>
 	</div>
 </footer>
