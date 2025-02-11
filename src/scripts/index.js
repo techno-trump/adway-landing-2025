@@ -3,7 +3,6 @@ import throttle from "lodash.throttle";
 
 import { isMobile } from "./utils.js";
 import initDisclosures from "./disclosure.js";
-// import "./range-slider.min.js";
 import Lenis from 'lenis';
 
 window.app = window.app || {};
@@ -12,6 +11,7 @@ window.app.lenis =  new Lenis({
 	autoRaf: true,
 })
 
+window.app.grecaptchaSiteKey = document.querySelector(`meta[name="gcaptcha-site-key"]`)?.getAttribute("content");
 document.documentElement.classList.toggle("is-mobile", isMobile.any());
 
 
@@ -34,7 +34,7 @@ const intersectionObserver = new IntersectionObserver((entries) => {
 			entry.target.classList.add("_shown");
 		}
 	});
-}, { threshold: 0.8 });
+}, { threshold: window.innerWidth <= 768 ? 0.4 : 0.8 });
 document.querySelectorAll(`[data-component*=":intersection-observer:"]`).forEach(elem => {
 	intersectionObserver.observe(elem);
 });
@@ -57,44 +57,51 @@ function initCalculator() {
 	slider.addEventListener("change", recalc);
 }
 
-window.onSubmitReCaptcha = async function() {
-  const API_KEY = "11EB8AC1618FB46A9AAE12EE88221E3B";
-  const input = document.querySelector(".subscribe__input");
-  const email = input.value;
-  const response = await fetch("https://api.adwayusa.com/add/email", {
-    method: "POST",
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-    body: JSON.stringify({
-      API_KEY,
-      data: {
-        email,
-      },
-    }),
-  });
-  const res = await response.json();
-  if (res.result === "success") {
-    input.value = "";
+initFooterSubscription();
 
-    const modal = document.querySelector('[data-modal="4"]');
-    document.querySelector(".overlay").classList.add("overlay_show");
-    modal.classList.add("modal_show");
-    document.querySelectorAll(".modal").forEach(function (itemModal) {
-      if (itemModal.dataset.modal !== modal.dataset.modal) {
-        itemModal.style.display = "none";
-      }
-    });
-    modal.addEventListener("transitionend", (e) => {
-      if (!e.target.classList.contains("modal_show")) {
-        document.querySelectorAll(".modal").forEach(function (itemModal) {
-          itemModal.removeAttribute("style");
-        });
-      }
-    });
-  }
-  window.grecaptcha.reset();
+function initFooterSubscription() {
+	const form = document.querySelector("#subscribe-form");
+	const input = document.querySelector(".subscribe__input");
+	const errorModalBody = document.querySelector(`[data-drawer="subscription-error"] .drawer__body`);
+	const errorMsgTemplate = errorModalBody.innerHTML;
+
+	const send = async (token) => {
+		const API_KEY = "11EB8AC1618FB46A9AAE12EE88221E3B";
+		const email = input.value;
+		try {
+			const response = await fetch("https://api.adwayusa.com/add/email", {
+				method: "POST",
+				headers: {
+					"Content-Type": "multipart/form-data",
+				},
+				body: JSON.stringify({
+					API_KEY,
+					data: {
+						email,
+					},
+				}),
+			});
+			
+			if (response.ok) {
+				// const result = await response.json();
+				window.app.drawers.open("subscription-success");
+			} else {
+				throw new Error(response.statusText);
+			}
+		} catch(ex) {
+				console.error(ex);
+			errorModalBody.innerHTML = errorMsgTemplate.replace("{{error-msg}}", `Error: ${ex.message}`);
+			window.app.drawers.open("subscription-error");
+		}
+	}
+	form.addEventListener("submit", (e) => {
+		e.preventDefault();
+
+		grecaptcha.execute(window.app.grecaptchaSiteKey, {action: 'submit'})
+		.then(send);
+	});
 }
+
 // Hide title
 document.addEventListener("scroll", throttle(() => {
 	document.documentElement.classList.toggle("hide-title", window.scrollY > 50);
@@ -118,7 +125,6 @@ document.querySelectorAll(`.range-slider`).forEach(elem => {
 	const recalcProgress = () => {
 		const min = parseFloat(elem.getAttribute("min"));
 		const max = parseFloat(elem.getAttribute("max"));
-		console.log(elem.value, min, max);
 		elem.style.setProperty("--progress", `${(elem.value - min) / (max - min) * 100}%`);
 	};
 	recalcProgress();

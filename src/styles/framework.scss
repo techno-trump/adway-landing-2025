@@ -23,6 +23,8 @@
 	--blue-300: rgba(0, 183, 255, 0.884);
 	--blue-600: rgb(0, 129, 180);
 
+	--brand-primary-color: #19a9dd;
+
 	--green-700: rgb(37, 136, 37);
 	--container-save-space: 32px;
 	@media (max-width: config.$mbpMM) {
@@ -88,10 +90,10 @@
 		object-fit: contain;
 	}
 	&_cut img, &_cut &__item {
-		left: -0.5%;
-		top: -0.5%;
-		width: 101%;
-		height: 101%;
+		left: -1%;
+		top: -1%;
+		width: 102%;
+		height: 102%;
 	}
 	&_top-left img, &_top-left &__item {
 		object-position: top left;
@@ -342,7 +344,7 @@
 	&__list {
 		display: flex;
 		gap: 20px;
-		animation: trusted-by-move 40s linear infinite;
+		animation: trusted-by-move 20s linear infinite;
 		
 	}
 	@keyframes trusted-by-move {
@@ -682,7 +684,7 @@
     font-size: 40px;
     line-height: 48px;
     text-transform: uppercase;
-    color: var(--green-700);
+    color: var(--brand-primary-color);
 		margin-bottom: 10px;
   }
 	&__paragraph {
@@ -858,7 +860,7 @@
 	background: transparent;
 	&::-moz-range-track {
 		height: 4px;
-		background: linear-gradient(90deg, var(--green-700) 0%, var(--green-700) var(--progress, 0%), transparent var(--progress, 0%), transparent 100%);
+		background: linear-gradient(90deg, var(--brand-primary-color) 0%, var(--brand-primary-color) var(--progress, 0%), transparent var(--progress, 0%), transparent 100%);
 		background-color: #717171;
 		cursor: pointer;
 	}
@@ -873,7 +875,7 @@
 	&::-webkit-slider-runnable-track {
 		-webkit-appearance: none;
 		height: 4px;
-		background: linear-gradient(90deg, var(--green-700) 0%, var(--green-700) var(--progress, 0%), transparent var(--progress, 0%), transparent 100%);
+		background: linear-gradient(90deg, var(--brand-primary-color) 0%, var(--brand-primary-color) var(--progress, 0%), transparent var(--progress, 0%), transparent 100%);
 		background-color: #717171;
 	}
 	&::-webkit-slider-thumb {

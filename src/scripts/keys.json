@@ -1,0 +1,8 @@
+{
+	"development": {
+		"recaptchaSiteKey": "6Lf1-9IqAAAAADjbE0s_OUWPpM0GFYaS2aKGFx6J"
+	},
+	"production": {
+		"recaptchaSiteKey": "6LdXLLYUAAAAAGe0NJyNhiK62e0soCSk_sVQhyyQ"
+	}
+}

@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import path from "path";
+import mkcert from 'vite-plugin-mkcert'
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
 export default defineConfig({
@@ -19,6 +20,6 @@ export default defineConfig({
 			alias: {
 				'img': path.resolve(__dirname, 'public/img')
 			}
-		}
+		},
   },
 });

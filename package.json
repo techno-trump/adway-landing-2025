@@ -17,7 +17,8 @@
     "lenis": "^1.1.20",
     "lodash.throttle": "^4.1.1",
     "sass": "^1.83.0",
-    "tom-select": "^2.4.1"
+    "tom-select": "^2.4.1",
+    "vite-plugin-mkcert": "^1.17.6"
   },
   "devDependencies": {
     "concurrently": "^9.1.0",

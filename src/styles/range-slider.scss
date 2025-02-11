@@ -121,7 +121,7 @@ input[type='range']:focus + .rangeSlider .rangeSlider__handle {
     color: var(--gray-600);
 
     &_active {
-      color: var(--green-700);
+      color: var(--brand-primary-color);
     }
   }
 

@@ -50,16 +50,17 @@
 		</div>
 		<div class="footer__section footer__section_newsletter">
 			<h3 class="footer__section-title">Newsletter</h3>
-			<form class="subscribe">
+			<form id="subscribe-form" class="subscribe">
 				<div class="subscribe__field">
 					<div class="subscribe__title">Email</div>
-					<input type="email" class="subscribe__input" required>
+					<input type="email" name="email" class="subscribe__input" required>
 				</div>
-				<button data-sitekey="6LdXLLYUAAAAAGe0NJyNhiK62e0soCSk_sVQhyyQ"
-					data-callback="onSubmitReCaptcha"
-					onclick="onSubmitReCaptcha"
-					type="submit" class="subscribe__btn btn_primary btn g-recaptcha">
-					Subscribe</button>
+				<button class="subscribe__btn btn_primary btn">Subscribe</button>
+				<!-- <button data-sitekey="6Lf1-9IqAAAAADjbE0s_OUWPpM0GFYaS2aKGFx6J"
+					data-action='submit'
+					data-callback='footerSubscribeSubmit'
+					 class="subscribe__btn btn_primary btn g-recaptcha">
+					Subscribe</button> -->
 			</form>
 		</div>
 	</div>
