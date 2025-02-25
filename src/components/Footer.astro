@@ -1,4 +1,5 @@
 ---
+const portalHost = import.meta.env.ASTRO_APP_CABINET_HOST;
 ---
 
 <footer class="footer section-space">
@@ -15,8 +16,8 @@
 		<div class="footer__section">
 			<h3 class="footer__section-title">Sign In</h3>
 			<div class="footer__section-body">
-				<a href="https://portal.adwayusa.com/signupadvertiser" class="btn footer__link">Sign In as Advertiser</a>
-				<a href="https://portal.adwayusa.com/signupdriver" class="btn footer__link">Sign In as Driver</a>
+				<a href={`${portalHost}/signupadvertiser`} class="btn footer__link">Sign Up as Advertiser</a>
+				<a href={`${portalHost}/signupdriver`} class="btn footer__link">Sign Up as Driver</a>
 			</div>
 		</div>
 		<div class="footer__section">

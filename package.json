@@ -7,6 +7,7 @@
     "dev": "concurrently \"gulp generateFontFaces convertIconFontsFaces --rewrite && webpack serve --config webpack.dev.js\" \"astro dev --host\"",
     "start": "astro dev",
     "build": "astro check && astro build && gulp --rewrite --prod && webpack --config webpack.prod.js",
+		"dev-build": "astro check && astro build --mode development && gulp --rewrite --prod && webpack --config webpack.prod.js",
     "preview": "astro preview",
     "astro": "astro"
   },

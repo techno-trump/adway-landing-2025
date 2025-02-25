@@ -1,5 +1,5 @@
 ---
-
+const portalHost = import.meta.env.ASTRO_APP_CABINET_HOST;
 ---
 
 <header id="header" class="header">
@@ -14,12 +14,12 @@
 			<div class="main-menu header__menu" data-drawer="main-menu">
 				<div class="main-menu__panel" data-elem="drawer.panel">
 					<nav class="main-menu__nav">
-						<a href="https://portal.adwayusa.com/login" class="btn">Sign In</a>
+						<a href={`${portalHost}/login`} class="btn">Sign In</a>
 						<a href="#advertise" class="btn">Advertise</a>
 						<a href="#drive" class="btn">Drive</a>
 						<a href="#case-studies" class="btn">Case Studies</a>
 						<a href="#technology" class="btn">Technology</a>
-						<a href="https://portal.adwayusa.com/contactus" class="btn">Contact Us</a>
+						<a href={`${portalHost}/contactus`} class="btn">Contact Us</a>
 					</nav>
 				</div>
 			</div>

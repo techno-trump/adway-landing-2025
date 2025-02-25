@@ -2,6 +2,8 @@
 import ImgWrap from 'src/components/basic/ImgWrap.astro';
 import Layout from '../layouts/Layout.astro';
 
+const portalHost = import.meta.env.ASTRO_APP_CABINET_HOST;
+
 const cases = [
 						{
 							src: "img/case_1.jpg",
@@ -102,8 +104,8 @@ const medias = [
 		<div class="main-actions__wrap">
 			<div class="container container_wide main-actions__container">
 				<div class="main-actions__sub-wrap">
-					<a href="https://portal.adwayusa.com/signupadvertiser" class="btn btn_primary">Sign Up as Advertiser</a>
-					<a href="https://portal.adwayusa.com/signupdriver" class="btn btn_primary">Sign Up as Driver</a>
+					<a href={`${portalHost}/signupadvertiser`} class="btn btn_primary">Sign Up as Advertiser</a>
+					<a href={`${portalHost}/signupdriver`} class="btn btn_primary">Sign Up as Driver</a>
 				</div>
 			</div>
 		</div>
@@ -222,7 +224,7 @@ const medias = [
 			<div class="sign-up__info">
 				<h2 class="tg-section-title sign-up__title">Create campaign in under 5 minutes</h2>
 				<div class="sign-up__msg tg-section-regular">We make campaign creation, tracking, editing and reporting intuitive and quick.</div>
-				<a href="https://portal.adwayusa.com/signupadvertiser" class="btn btn_primary sign-up__btn">Sign Up as Advertiser</a>
+				<a href={`${portalHost}/signupadvertiser`} class="btn btn_primary sign-up__btn">Sign Up as Advertiser</a>
 			</div>
 			<img alt="Learn, Graduate, Work" class="sign-up__img" src="img/admin-panel-demo.png">
 		</div>
@@ -255,7 +257,7 @@ const medias = [
 			<div class="sign-up__info">
 				<h2 class="tg-section-title sign-up__title">Drive with Adway</h2>
 				<div class="sign-up__msg tg-section-regular">The more you drive, the more you earn. No wraps, toppers or hassle. Supercharge your income today. Download the app or apply here, now! </div>
-				<a href="https://portal.adwayusa.com/signupdriver" class="btn btn_primary sign-up__btn">Sign up as Driver</a>
+				<a href={`${portalHost}/signupdriver`} class="btn btn_primary sign-up__btn">Sign up as Driver</a>
 			</div>
 		</div>
 	</section>
