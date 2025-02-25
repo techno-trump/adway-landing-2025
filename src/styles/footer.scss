@@ -47,6 +47,10 @@
 		font-size: 18px;
 		font-weight: 700;
 		margin-bottom: 20px;
+		&_link {
+			--color: var(--light-900);
+			--hover-color: var(--light-907);
+		}
 	}
 	&__section-body {
 		display: grid;

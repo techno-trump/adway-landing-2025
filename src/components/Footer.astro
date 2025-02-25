@@ -14,10 +14,13 @@ const portalHost = import.meta.env.ASTRO_APP_CABINET_HOST;
 			<div class="footer__slogan">Ads that move</div>
 		</div>
 		<div class="footer__section">
-			<h3 class="footer__section-title">Sign In</h3>
+			<h3 class="footer__section-title footer__section-title_link"><a href={`${portalHost}/login`} class="btn">Sign In</a></h3>
 			<div class="footer__section-body">
 				<a href={`${portalHost}/signupadvertiser`} class="btn footer__link">Sign Up as Advertiser</a>
 				<a href={`${portalHost}/signupdriver`} class="btn footer__link">Sign Up as Driver</a>
+				<a href={`${portalHost}/privacypolicy`} class="btn footer__link">Privacy Policy</a>
+				<a href={`${portalHost}/advertisertc`} class="btn footer__link">Advertiser Terms and Conditions</a>
+				<a href={`${portalHost}/drivertc`} class="btn footer__link">Driver Terms and Conditions</a>
 			</div>
 		</div>
 		<div class="footer__section">
