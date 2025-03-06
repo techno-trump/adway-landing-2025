@@ -1,5 +1,7 @@
 import "../styles/index.scss";
 import throttle from "lodash.throttle";
+import Swiper from "swiper";
+import { Autoplay } from "swiper/modules";
 
 import { isMobile } from "./utils.js";
 import initDisclosures from "./disclosure.js";
@@ -43,6 +45,7 @@ initCalculator();
 
 function initCalculator() {
 	const rangeTotal = document.querySelector(".range__total");
+	if (!rangeTotal) return;
 	const slider = document.querySelector("#monetizing-hours");
 	const recalc = () => {
 		document.querySelectorAll(".points__item").forEach(function (item) {
@@ -129,4 +132,30 @@ document.querySelectorAll(`.range-slider`).forEach(elem => {
 	};
 	recalcProgress();
 	elem.addEventListener("input", recalcProgress);
+});
+
+document.querySelectorAll(`[data-component*=":case-studies-slider:"]`).forEach(root => {
+	new Swiper(root, {
+		wrapperClass: "case-studies__wrap",
+		slideClass: "case-study-card",
+		slidesPerView: "auto",
+		spaceBetween: 30,
+	});
+});
+document.querySelectorAll(`[data-component*=":trusted-by-slider:"]`).forEach(root => {
+		console.log(root);
+	new Swiper(root, {
+		wrapperClass: "trusted-by__list",
+		slideClass: "trusted-by__item",
+		"modules": [Autoplay],
+		"loop": true,
+		speed: 4000,
+		"autoplay": {
+			"delay": 0,
+			disableOnInteraction: false,
+		},
+		"slidesPerView": "auto",
+		"freeMode": true,
+		spaceBetween: 20,
+	});
 });
