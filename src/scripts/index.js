@@ -1,7 +1,7 @@
 import "../styles/index.scss";
 import throttle from "lodash.throttle";
 import Swiper from "swiper";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 
 import { isMobile } from "./utils.js";
 import initDisclosures from "./disclosure.js";
@@ -136,10 +136,33 @@ document.querySelectorAll(`.range-slider`).forEach(elem => {
 
 document.querySelectorAll(`[data-component*=":case-studies-slider:"]`).forEach(root => {
 	new Swiper(root, {
+		"modules": [Navigation],
 		wrapperClass: "case-studies__wrap",
 		slideClass: "case-study-card",
-		slidesPerView: "auto",
-		spaceBetween: 30,
+		slidesPerView: 1.2,
+		spaceBetween: 20,
+		navigation: {
+			prevEl: ".case-studies__prev",
+			nextEl: ".case-studies__next"
+		},
+		breakpoints: {
+			1500: {
+				slidesPerView: 4,
+				spaceBetween: 30,
+			},
+			1100: {
+				slidesPerView: 4,
+				spaceBetween: 20,
+			},
+			800: {
+				slidesPerView: 3,
+				spaceBetween: 20,
+			},
+			560: {
+				slidesPerView: 2,
+				spaceBetween: 20,
+			}
+		}
 	});
 });
 document.querySelectorAll(`[data-component*=":trusted-by-slider:"]`).forEach(root => {
@@ -154,6 +177,7 @@ document.querySelectorAll(`[data-component*=":trusted-by-slider:"]`).forEach(roo
 			"delay": 0,
 			disableOnInteraction: false,
 		},
+		
 		"slidesPerView": "auto",
 		"freeMode": true,
 		spaceBetween: 20,
